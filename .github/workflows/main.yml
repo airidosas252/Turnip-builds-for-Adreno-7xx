@@ -16,7 +16,7 @@ jobs:
       - name: Send Message to Telegram
         run: |
           BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_ID=@airidosas252  # Replace with your chat ID or bot username
+          CHAT_ID=-1002012373347  # Replace with your chat ID or bot username
           
           # Send "Hello, World" to your Telegram bot
           curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=Hello, World"
