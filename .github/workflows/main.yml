@@ -1,16 +1,22 @@
+name: Send Telegram Message
+
 on:
+  push:
+    branches:
+      - main
+
 jobs:
-  your_job_name:
+  send-message:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-       
-      - name: Use Telegram Bot
+
+      - name: Send Message to Telegram
         run: |
-          # Get the Telegram bot token from secrets
           BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID=@Daisychainer_bot  # Replace with your chat ID or bot username
           
-          # Use the token to send messages or trigger actions with your bot
-          # Example: Send a message to your bot
-          curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=@Daisychainer_bot&text=Hello from GitHub Actions"
+          # Send "Hello, World" to your Telegram bot
+          curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=Hello, World"
