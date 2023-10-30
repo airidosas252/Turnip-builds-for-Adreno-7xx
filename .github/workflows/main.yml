@@ -20,8 +20,7 @@ jobs:
           
           # Send "Hello, World" to your Telegram bot
           curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=Hello, World"
-import telegram
-from telegram.ext import Updater, CommandHandler
+import telegram from telegram.ext import Updater, CommandHandler
 
 def compile(update, context):
     # Handle the /compile command here and perform the compilation
