@@ -20,3 +20,23 @@ jobs:
           
           # Send "Hello, World" to your Telegram bot
           curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=Hello, World"
+import telegram
+from telegram.ext import Updater, CommandHandler
+
+def compile(update, context):
+    # Handle the /compile command here and perform the compilation
+    # Once the compilation is done, send a success message
+    context.bot.send_message(chat_id=update.message.chat_id, text="This test has been successful!")
+
+def main():
+    # Initialize your bot and set up the command handler
+    updater = Updater(token='YOUR_BOT_TOKEN', use_context=True)
+    dp = updater.dispatcher
+    dp.add_handler(CommandHandler('compile', compile))
+
+    # Start the bot
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
